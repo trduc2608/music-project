@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SongController;
+use App\Models\Song;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('songs', SongController::class);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $songs = Song::all(); // get all songs from the database
+    return view('dashboard', compact('songs')); // pass the songs variable to the view
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

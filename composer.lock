@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7b51c5279440b8c21f942ebfc6f530c",
+    "content-hash": "0838bef2e24250ca6b951726db1ce90f",
     "packages": [
+        {
+            "name": "bensherred/laravel-make-model",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bensherred/laravel-make-model.git",
+                "reference": "337633c2d0103e55ccd7cead87aa1574e14f6826"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bensherred/laravel-make-model/zipball/337633c2d0103e55ccd7cead87aa1574e14f6826",
+                "reference": "337633c2d0103e55ccd7cead87aa1574e14f6826",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BenSherred\\MakeModel\\MakeModelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BenSherred\\MakeModel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Sherred",
+                    "email": "ben@sherred.co.uk"
+                },
+                {
+                    "name": "ShawnCZek",
+                    "email": "shawnczek@truckersmp.com"
+                }
+            ],
+            "description": "A Laravel package which extends the make:model command to create everything you need for a new feature",
+            "support": {
+                "issues": "https://github.com/bensherred/laravel-make-model/issues",
+                "source": "https://github.com/bensherred/laravel-make-model/tree/master"
+            },
+            "time": "2019-12-01T01:24:30+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
