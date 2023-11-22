@@ -11,7 +11,7 @@ class SongController extends Controller
     public function index()
     {
         $songs = Song::all();
-        return view('songs.index', compact('songs'));
+        return view('dashboard', compact('songs'));
     }
 
     // Show the form for creating a new song
@@ -24,7 +24,7 @@ class SongController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'thumb' => 'required|image',
+            'thumb' => 'required|file|mimes:jpeg,jpg,png,gif,webp',
             'title' => 'required|string',
             'genres' => 'required|string',
             'artists' => 'required|string',
@@ -39,7 +39,7 @@ class SongController extends Controller
         $song->audio = $request->file('audio')->store('public/audios');
         $song->save();
 
-        return redirect()->route('songs.index')->with('success', 'Song created successfully.');
+        return redirect()->route('dashboard')->with('success', 'Song created successfully.');
     }
 
     // Display the specified song
@@ -58,7 +58,7 @@ class SongController extends Controller
     public function update(Request $request, Song $song)
     {
         $request->validate([
-            'thumb' => 'nullable|image',
+            'thumb' => 'nullable|file|mimes:jpeg,jpg,png,gif,webp',
             'title' => 'required|string',
             'genres' => 'required|string',
             'artists' => 'required|string',
@@ -76,13 +76,13 @@ class SongController extends Controller
         $song->artists = $request->input('artists');
         $song->save();
 
-        return redirect()->route('songs.index')->with('success', 'Song updated successfully.');
+        return redirect()->route('dashboard')->with('success', 'Song updated successfully.');
     }
 
     // Remove the specified song from the database
     public function destroy(Song $song)
     {
         $song->delete();
-        return redirect()->route('songs.index')->with('success', 'Song deleted successfully.');
+        return redirect()->route('dashboard')->with('success', 'Song deleted successfully.');
     }
 }

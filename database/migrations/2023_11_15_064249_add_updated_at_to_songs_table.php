@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('songs', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('genres');
-            $table->string('artists');
-            $table->string('thumb');
-            $table->string('audio');
+        Schema::table('songs', function (Blueprint $table) {
+            // Add the updated_at column as a timestamp
             $table->timestamp('updated_at')->nullable();
         });
-        
     }
 
     /**
@@ -28,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('songs');
+        Schema::table('songs', function (Blueprint $table) {
+            // Drop the updated_at column
+            $table->dropColumn('updated_at');
+        });
     }
 };
